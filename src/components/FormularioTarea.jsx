@@ -12,6 +12,11 @@ const FormularioTarea = () => {
         //limpiamos input
         setTarea("");
 
+    };
+    const borrarTarea = (nombre)=> {
+        let arregloModificado = arregloTarea.filter((item)=>(item !== nombre));
+        //actualizar el state
+        setArregloTarea(arregloModificado)
     }
 
 
@@ -19,7 +24,7 @@ const FormularioTarea = () => {
     <>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3 d-flex" controlId="formBasicEmail">
-          <Form.Control type="text" 
+          <Form.Control className="me-3" type="text" 
           placeholder="Ingrese su tarea aqui..."
           onChange={(e)=> setTarea(e.target.value)}
           value={tarea} 
@@ -30,7 +35,7 @@ const FormularioTarea = () => {
         </Form.Group>
       </Form>
 
-      <ListaTarea arregloTarea={arregloTarea}></ListaTarea>
+      <ListaTarea arregloTarea={arregloTarea} borrarTarea={borrarTarea}></ListaTarea>
     </>
     
   );
